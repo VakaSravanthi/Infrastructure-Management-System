@@ -1,0 +1,217 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Bar</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('vvit1.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        nav {
+            background-color: #f6450a;
+            color: #fff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 27px;
+            padding: 10px;
+            display: inline-block;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: #fff;
+            padding: 12px 16px;
+            display: block;
+            text-decoration: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #c4847d;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            margin-top: 20px;
+            position: relative;
+            z-index: 0;
+            text-align: center;
+        }
+
+        .marquee {
+            font-size: 33px;
+            font-weight: bold;
+            color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            animation: marqueeAnimation 20s linear infinite;
+        }
+
+        @keyframes marqueeAnimation {
+            0% { transform: translateX(100%); background: radial-gradient(circle, #4CAF50, #45a049); }
+            25% { transform: translateX(-25%); background: radial-gradient(circle, #45a049, #3498db); }
+            50% { transform: translateX(-50%); background: radial-gradient(circle, #3498db, #e74c3c); }
+            75% { transform: translateX(-75%); background: radial-gradient(circle, #e74c3c, #f39c12); }
+            100% { transform: translateX(-100%); background: radial-gradient(circle, #f39c12, #4CAF50); }
+        }
+
+        /* Dynamic Path */
+        .path-container {
+            position: absolute;
+            bottom: 0;
+            height: 5px;
+            background-color: #ff0000;
+            width: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: width 0.5s ease;
+            z-index: 0;
+        }
+
+        body.path-home .path-container {
+            width: 100%;
+            background: no-repeat;
+        }
+
+        body.path-blocks .path-container {
+            width: 25%;
+        }
+        .nested-dropdown:hover .nested-dropdown-content {
+                 display: block;
+                 left: 50%;
+        }
+        .dropdown-content,.nested-dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: #333;
+                min-width: 160px;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+                z-index: 1;
+            }
+
+        body.path-block-a .path-container,
+        body.path-block-b .path-container,
+        body.path-block-c .path-container,
+        body.path-block-d .path-container,
+        body.path-appsdc .path-container,
+        body.path-ece .path-container,
+        body.path-cse .path-container,
+        body.path-it .path-container,
+        body.path-about .path-container,
+        body.path-contact .path-container,
+        body.path-login .path-container,
+        body.path-classrooms .path-container,
+        body.path-labs .path-container,
+        body.path-staffrooms .path-container {
+            width: 0;
+        }
+    </style>
+</head>
+<body class="path-home" background="vvit1.jpeg">
+
+<nav>
+    <img src="vvit.jpeg" alt="Logo" height="78px">
+    <a href="#"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
+
+    <div class="dropdown">
+        <a href="#"><i class="fa fa-building" aria-hidden="true"></i>Blocks</a>
+        <div class="dropdown-content">
+          <a href="#" onclick="changePath('blocka')">Block-A(S&H)</a>
+          <a href="#" onclick="changePath('block-b')">Block-B(EEE)</a>
+          <a href="#" onclick="changePath('blockc')">Block-C(civil)</a>
+          <a href="#" onclick="changePath('block-d')">Block-D(Mech)</a>
+          <!-- Nested Dropdown for "NewBlock" -->
+          <div class="dropdown nested-dropdown">
+            <a href="#"></i>NewBlock</a>
+            <div class="nested-dropdown-content">
+              <a href="#" onclick="changePath('appsdc')">APPSDC</a>
+              <a href="#" onclick="changePath('ece')">ECE</a>
+              <a href="#" onclick="changePath('cse')">CSE</a>
+              <a href="it.html" onclick="changePath('it')">IT</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    <a href="#"><i class="fa fa-user"></i></i>About us</a>
+    <a href="#"><i class="fa fa-phone" aria-hidden="true"></i>Contact us</a>
+    <a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i>Login</a>
+
+    <!-- Dynamic Path Element -->
+    
+</nav>
+
+<div class="marquee-container">
+    <div id="marquee" class="marquee">
+        Infrastructure Management System
+    </div>
+</div>
+
+<!-- Separate HTML pages for Block-A sections -->
+<div id="block-d-content" style="display:none;">
+    <h1>Block-D Sections</h1>
+   
+    <a href="block-d.html">Labs</a>
+</div>
+
+<!-- JavaScript for changing paths -->
+<script>
+    function changePath(path) {
+        document.body.className = 'path-' + path;
+
+        // Redirect to the corresponding block page
+        if (path === 'blocka') {
+            window.location.href = 'blocka.html';
+        } else if (path === 'block-b') {
+            window.location.href = 'block-b.html';
+        } else if (path === 'blockc') {
+            window.location.href = 'block-c.html';
+        } else if (path === 'block-d') {
+            window.location.href = 'block-d.html';
+        }
+    }
+</script>
+
+</body>
+</html>

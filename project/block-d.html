@@ -1,0 +1,423 @@
+<!-- blockd.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLOCKD(MECH)</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('blockd.jpg') no-repeat center center fixed;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        nav {
+            background-color: #f6450a;
+            color: #fff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        nav h1 {
+            font-size: 39px;
+            margin: 0;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 32px; /* Adjusted font size */
+            padding: 10px;
+            display: inline-block;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            margin-top: 20px;
+            position: relative;
+            z-index: 0;
+            text-align: center;
+        }
+
+        .marquee {
+            font-size: 39px;
+            font-weight: bold;
+            color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            animation: marqueeAnimation 20s linear infinite;
+        }
+
+        @keyframes marqueeAnimation {
+            0% { transform: translateX(100%); background: radial-gradient(circle, #4CAF50, #45a049); }
+            25% { transform: translateX(-25%); background: radial-gradient(circle, #45a049, #3498db); }
+            50% { transform: translateX(-50%); background: radial-gradient(circle, #3498db, #e74c3c); }
+            75% { transform: translateX(-75%); background: radial-gradient(circle, #e74c3c, #f39c12); }
+            100% { transform: translateX(-100%); background: radial-gradient(circle, #f39c12, #4CAF50); }
+        }
+
+        /* Dynamic Path */
+        .path-container {
+            position: absolute;
+            bottom: 0;
+            height: 5px;
+            background-color: #ff0000; /* Red color for the path */
+            width: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: width 0.5s ease;
+            z-index: 0;
+        }
+
+        body.path-home .path-container {
+            width: 100%;
+            background: no-repeat;
+        }
+
+        body.path-blocks .path-container {
+            width: 25%;
+        }
+
+        body.path-block-a .path-container,
+        body.path-block-b .path-container,
+        body.path-block-c .path-container,
+        body.path-block-d .path-container,
+        body.path-about .path-container,
+        body.path-contact .path-container,
+        body.path-login .path-container {
+            width: 0;
+        }
+
+        /* New styles for the boxes */
+        .classroom-box {
+            background-color:#be5b3c ;/* Blue color */
+            color: #fff;
+            padding: 10px; /* Adjusted padding */
+            margin: 10px; /* Adjusted margin */
+            text-align:left;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            max-width: 45%; /* Adjusted maximum width */
+            display: inline-block; /* Display inline to fit side by side */
+        }
+
+        .classroom-box h2 {
+            font-size: 18px; /* Adjusted font size */
+            margin-bottom: 8px; /* Adjusted margin */
+        }
+    
+        /* Your existing styles here */
+
+        /* New styles for the boxes */
+        .classroom-box {
+            background-color: #468fb3; /* Blue color */
+            color: #fff;
+            padding: 10px; /* Adjusted padding */
+            margin: 10px; /* Adjusted margin */
+            text-align: left;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            max-width: 45%; /* Adjusted maximum width */
+            display: inline-block; /* Display inline to fit side by side */
+            cursor: pointer; /* Add pointer cursor to indicate it's clickable */
+        }
+
+        .classroom-box h2 {
+            font-size: 18px; /* Adjusted font size */
+            margin-bottom: 8px; /* Adjusted margin */
+        }
+
+        /* Dropdown styles */
+        .dropdown1 {
+                position: relative;
+            }
+            .dropdown-content1,.nested-dropdown-content1 {
+                display: none;
+                position: absolute;
+                background-color: #333;
+                min-width: 160px;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+                z-index: 1;
+            }
+            .dropdown-content1 a,.nested-dropdown-content1 a{
+                color: #fff;
+                padding: 12px 16px;
+                display: block;
+                text-decoration: none;
+            }
+            .footer-button-container {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+}
+
+.footer-button {
+    padding: 13px 20px; /* Adjust padding for a medium size */
+    font-size: 22px; /* Adjust font size for clarity */
+    margin-left: 12px; /* Adjust margin for spacing between buttons */
+    cursor: pointer;
+    background-color: #f6450a; /* Adjust button color */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+.footer-button:hover {
+    background-color: #555; /* Change color on hover */
+}
+            .dropdown-content1 a:hover,.nested-dropdown-content1 a:hover{
+                background-color:#c4847d;
+            }
+    
+            .dropdown1:hover .dropdown-content1 {
+                display: block;
+            }
+
+       
+
+            .dropdown {
+            display: none;
+            position: absolute;
+            background-color: #dc511e; /* Dropdown background color */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            z-index: 1;
+        }
+
+        .dropdown-content {
+            padding: 10px;
+            color: #FFFF;
+        }
+
+        /* Show dropdown on hover */
+        .classroom-box:hover .dropdown {
+            display: block;
+        }
+    </style>
+</head>
+<body background="blockd.jpg">
+    
+    <nav>
+        <!-- Your existing nav content here -->
+
+        <img src="vvit.jpeg" alt="Logo" height="78px">
+        <a href="#" onclick="showClassrooms();"><i class="fa fa-building" aria-hidden="true"></i>Classrooms</a>
+        <div class="dropdown1">
+            <a href="#"><i class="fa fa-flask"></i></i>LABS</a>
+            <div class="dropdown-content1">
+                <a href="#" onclick="changePath('Lab-1')">LAB-1</a>
+                <a href="#" onclick="changePath('Lab-2')">LAB-2</a>
+         
+            </div>
+            </div>
+        <div class="dropdown1">
+            <a href="#"><i class="fa fa-users" aria-hidden="true">STAFFROOMS</i></a>
+            <div class="dropdown-content1">
+                <a href="#" onclick="changePath('Teaching')">TEACHING</a>
+                <a href="#" onclick="changePath('Non-Teaching')">NON-TEACHING</a>
+            </div>
+            </div>
+        <!-- Dynamic Path Element -->
+    
+</nav><div class="marquee-container">
+    <div id="marquee" class="marquee">
+        Department of Mechanical Engineering
+    </div>
+</div>
+    
+    
+    <!-- Classrooms Content -->
+    <div id="classrooms-content" style="display: none; text-align: center;">
+
+        <div class="classroom-box" id="1st-year-box">
+            <h2>1st Year</h2>
+            <!-- Dropdown content -->
+            <div class="dropdown">
+                <div class="dropdown-content">
+                    <!-- Your data here -->
+                    <p><a href="#" onclick="changeBackgroundAndLink('class.jpg', 'D101')">D101 - 1st year Mech-A</a></p>
+                    <p>D102 - 1st year Mech-B</p>
+                    <p>D103 - 1st year Mech-C</p>
+                    <p>D104 - 1st year Mech-D</p>
+                    <!-- Add more details as needed -->
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="classroom-box" id="2nd-year-box">
+            <h2>2nd Year</h2>
+            <div class="dropdown">
+                <div class="dropdown-content">
+                    <!-- Your data here -->
+                    <p>D201 - 2nd year
+                        Mech-A
+              </p>
+              <p>D202 - 2nd year
+                        Mech-B
+                  </p>
+                  <p>D203 - 2nd year
+                          Mech-C
+                 </p>
+                 <p>D204 - 2nd year
+                           Mech-D
+               </p>
+              
+                    <!-- Add more details as needed -->
+                </div>
+            </div>
+            <!-- Add content for 2nd year classrooms -->
+        </div>
+    
+
+        <div class="classroom-box" id="3rd-year-box">
+            <h2>3nd Year</h2>
+            <div class="dropdown">
+                <div class="dropdown-content">
+                    <!-- Your data here -->
+                    <p>D301 - 3rd year
+                        Mech-A
+              </p>
+              <p>D302 - 3rd year
+                        Mech-B
+                  </p>
+                  <p>D303 - 3rd year
+                          Mech-C
+                 </p>
+                 <p>D304 - 3rd year
+                           Mech-D
+               </p>
+              
+                    <!-- Add more details as needed -->
+                </div>
+            </div>
+            <!-- Add content for 2nd year classrooms -->
+        </div>
+        
+        <div class="classroom-box" id="4th-year-box">
+            <h2>4th Year</h2>
+            <div class="dropdown">
+                <div class="dropdown-content">
+                    <!-- Your data here -->
+                    <p>D401 - 4th  year
+                        Mech-A
+              </p>
+              <p>D402 - 4th year
+                        Mech-B
+                  </p>
+                  <p>D403 - 4th year
+                          Mech-C
+                 </p>
+                 <p>D404 - 4th year
+                           Mech-D
+               </p>
+              
+                    <!-- Add more details as needed -->
+                </div>
+            </div>
+            <!-- Add content for 2nd year classrooms -->
+        </div>
+    </div>
+</nav>
+<!-- Add these buttons at the bottom of your body -->
+<div style="text-align: end; position: fixed; bottom: -1px; right: 2px; padding: 10px;">
+
+    <button class="footer-button" onclick="goToHomepage()">Homepage</button>
+    
+    <button class="footer-button" onclick="goToPrevPage()">goToPrevPage</button>
+
+</div>
+
+</div>
+    <!-- Other content sections (if needed) -->
+
+    <!-- ... Your existing HTML code ... -->
+
+
+    <script>
+    const pages = ['homepage.html'];
+    let currentPageIndex = 0;
+
+    function goToPrevPage() {
+        if (currentPageIndex > 0) {
+            currentPageIndex--;
+            navigateToCurrentPage();
+        } else {
+            // If on the first page, change the background image back to 'blockd.jpg'
+            document.body.style.backgroundImage = "url('blockd.jpg')";
+        }
+    }
+
+    function goToHomepage() {
+        currentPageIndex = 0; // Set the index to the homepage
+        navigateToCurrentPage();
+    }
+
+    function navigateToCurrentPage() {
+        const currentPage = pages[currentPageIndex];
+        window.location.href = currentPage;
+    }
+
+    function showClassrooms() {
+        // Hide other elements if needed
+        hideOtherElements();
+
+        // Show classrooms content
+        document.getElementById("classrooms-content").style.display = "block";
+    }
+
+    function hideOtherElements() {
+        // Hide other elements as needed
+        // Example: document.getElementById("other-element").style.display = "none";
+    }
+
+    function changeBackgroundAndLink(backgroundImage, linkText) {
+        // Change the background image
+        document.body.style.backgroundImage = `url('${backgroundImage}')`;
+
+        // Add a class to the body to identify the current path
+        document.body.classList.add(`path-${linkText.toLowerCase()}`);
+
+        // Trigger the transition by updating the width of the path-container
+        updatePathContainerWidth(linkText);
+    }
+
+    function updatePathContainerWidth(linkText) {
+        const pathContainers = document.querySelectorAll('.path-container');
+        pathContainers.forEach((pathContainer) => {
+            const pathClass = `path-${linkText.toLowerCase()}`;
+            if (document.body.classList.contains(pathClass)) {
+                pathContainer.style.width = '100%';
+            } else {
+                pathContainer.style.width = '0';
+            }
+        });
+    }
+</script>
+
+
+
+<!-- ... Your existing HTML code ... -->
+
+</body>
+</html>
